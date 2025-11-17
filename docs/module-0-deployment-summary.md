@@ -1,7 +1,8 @@
 # Module 0: Baseline Deployment - Summary
 
 **Deployment Date**: 2025-11-17  
-**Status**: ✅ COMPLETE - Ready for Module 1 (AI Integration)
+**Status**: ✅ COMPLETE - Resources STOPPED  
+**Next**: Module 1 (AI Integration)
 
 ## 🌐 Deployed Resources
 
@@ -10,11 +11,11 @@
 | Resource | Name | Location | Status |
 |----------|------|----------|--------|
 | Resource Group | rg-ai-aks-lab-v3 | westus2 | ✅ Active |
-| AKS Cluster | aks-ai-lab | westus2 | ✅ Running |
-| PostgreSQL | postgres-ai-lab-thiago-v2 | centralus | ✅ Running (not used) |
+| AKS Cluster | aks-ai-lab | westus2 | 🛑 **STOPPED** |
+| PostgreSQL | postgres-ai-lab-thiago-v2 | centralus | ❌ **DELETED** (not needed) |
 | Log Analytics | logs-ai-lab | westus2 | ✅ Active |
 
-**Note**: PostgreSQL was provisioned but not integrated (SQLite sufficient for AI work).
+**Note**: PostgreSQL was deleted (not used by application). AKS stopped to save costs.
 
 ### Kubernetes Resources
 
@@ -29,9 +30,20 @@
 
 ## 🔗 Access URLs
 
-### Application
+### Application (When Running)
 - **Store Frontend**: http://172.193.227.28/
 - **Products API**: http://172.193.227.28/v1.0/invoke/products-service/method/catalog
+
+**⚠️ Currently STOPPED** - Start AKS to access application
+
+### To Restart for Module 1:
+```bash
+cd /home/thiago/azure/zero-to-hero-ai-aks-q
+source .env
+az aks start --name "$AKS_CLUSTER" --resource-group "$RG"
+# Wait 5-10 minutes for cluster to start
+kubectl wait --for=condition=Ready nodes --all --timeout=600s
+```
 
 ### Monitoring
 - **Grafana**: Port-forward required
@@ -134,11 +146,18 @@ dapr-store/cmd/products/
 
 ## 💰 Cost Management
 
-### Current Running Costs
-- **AKS**: ~$0.10/hour (2 nodes, Standard_DC2s_v3)
-- **PostgreSQL**: ~$0.02/hour (Burstable B1ms)
-- **Storage**: ~$0.01/hour (persistent)
-- **Total**: ~$0.13/hour (~$3.12/day if left running)
+### Current Status (Resources Stopped)
+- **AKS**: $0/hour (stopped)
+- **PostgreSQL**: $0/hour (deleted)
+- **Storage**: ~$0.01/hour (persistent disks)
+- **Total**: ~$7/month
+
+### When Running (for Module 1)
+- **AKS**: ~$0.10/hour (2 nodes)
+- **Storage**: ~$0.01/hour
+- **Total**: ~$80/month if left running 24/7
+
+**💡 Tip**: Always stop AKS when not actively working to save ~$70/month
 
 ### Stop Resources (Save Money)
 ```bash

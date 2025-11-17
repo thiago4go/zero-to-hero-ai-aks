@@ -278,14 +278,22 @@ With multiple developers:
 - **Skipped**: 4 (PostgreSQL deployment tasks)
 - **Remaining**: 28 (mostly polish and testing)
 
-**Status**: ✅ **BASELINE DEPLOYED** - Ready for Module 1 (AI Integration)
+**Status**: ✅ **BASELINE DEPLOYED** - Resources STOPPED - Ready for Module 1
 
-**Deployment Summary**:
-- ✅ AKS cluster with Dapr running
-- ✅ Dapr Store application operational (http://172.193.227.28/)
-- ✅ Monitoring stack deployed (Prometheus + Grafana)
-- ✅ Cost management scripts ready
-- ⏭️ PostgreSQL migration skipped (not needed for AI work)
+**Current State**:
+- ✅ AKS cluster deployed and STOPPED (save costs)
+- ✅ Dapr Store application ready (start AKS to access)
+- ✅ Monitoring stack deployed
+- ❌ PostgreSQL DELETED (not needed for AI work)
+- ✅ All code and configurations committed to git
+
+**To Resume Work**:
+```bash
+cd /home/thiago/azure/zero-to-hero-ai-aks-q
+source .env
+az aks start --name "$AKS_CLUSTER" --resource-group "$RG"
+kubectl wait --for=condition=Ready nodes --all --timeout=600s
+```
 
 **See**: `/docs/module-0-deployment-summary.md` for complete deployment details
 
