@@ -1,0 +1,29 @@
+prometheus:
+  prometheusSpec:
+    retention: 15d
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 20Gi
+    serviceMonitorSelectorNilUsesHelmValues: false
+
+grafana:
+  adminPassword: "admin"
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+      - name: 'default'
+        folder: 'Dapr Store'
+        type: file
+        options:
+          path: /var/lib/grafana/dashboards/default
+  dashboards:
+    default:
+      dapr-store-overview:
+        file: dashboards/dapr-store-overview.json
+      service-health:
+        file: dashboards/service-health.json

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "eastus"
+    },
+    "aksClusterName": {
+      "value": "aks-ai-lab"
+    },
+    "postgresqlServerName": {
+      "value": "postgres-ai-lab"
+    },
+    "postgresqlAdminPassword": {
+      "value": ""
+    },
+    "logAnalyticsName": {
+      "value": "logs-ai-lab"
+    }
+  }
+}

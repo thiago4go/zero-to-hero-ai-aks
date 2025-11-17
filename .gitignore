@@ -1,0 +1,44 @@
+# Go
+*.exe
+*.test
+vendor/
+*.out
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Kubernetes secrets
+*.secret.yaml
+secrets/
+.kube/
+kubeconfig*
+*.key
+*.crt
+
+# Terraform (if used)
+.terraform/
+*.tfstate*
+*.tfvars
+.terraform.lock.hcl
+
+# Azure
+.azure/
+
+# Temporary files
+*.tmp
