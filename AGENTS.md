@@ -4,7 +4,7 @@ Auto-generated from all feature plans. Last updated: 2025-11-16
 
 ## Repository Information
 
-- **Main Repository**: git@github.com:thiago4go/zero-to-hero-ai-aks-q.git
+- **Main Repository**: git@github.com:thiago4go/zero-to-hero-ai-aks.git
 - **Dapr Store Fork**: git@github.com:thiago4go/dapr-store.git (located at /home/thiago/azure/zero-to-hero-ai-aks-q/dapr-store)
 - **Docker Hub**: thiago4go
 - **Container Registry**: docker.io/thiago4go

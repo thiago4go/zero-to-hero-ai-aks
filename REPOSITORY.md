@@ -3,7 +3,7 @@
 ## Git Repositories
 
 ### Main Repository
-- **URL**: git@github.com:thiago4go/zero-to-hero-ai-aks-q.git
+- **URL**: git@github.com:thiago4go/zero-to-hero-ai-aks.git
 - **Purpose**: Main lab project with infrastructure, specs, and documentation
 
 ### Dapr Store Fork
