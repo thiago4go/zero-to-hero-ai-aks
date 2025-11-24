@@ -1,0 +1,58 @@
+{
+  "mcpServers": {
+       "context7": {
+      "type": "stdio",
+      "url": "",
+      "headers": {},
+      "oauthScopes": [
+        "openid",
+        "email",
+        "profile",
+        "offline_access"
+      ],
+        "command": "/home/thiago/.nvm/versions/node/v24.5.0/bin/node",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp",
+        "--api-key",
+        "ctx7sk-86b02dec-f0b4-467d-be64-584bd9dcdec3"
+      ],
+      "timeout": 120000,
+      "disabled": false
+    },
+    "ddg-search": {
+      "type": "stdio",
+      "url": "",
+      "headers": {},
+      "oauthScopes": [
+        "openid",
+        "email",
+        "profile",
+        "offline_access"
+      ],
+      "command": "uvx",
+      "args": [
+        "duckduckgo-mcp-server"
+      ],
+      "timeout": 120000,
+      "disabled": false
+    },
+    "rag-memory": {
+      "command": "/home/thiago/.nvm/versions/node/v24.5.0/bin/node",
+      "args": [
+        "/home/thiago/agentic-era/mcps/memory-mcp-rag/dist/index.js"
+      ],
+      "env": {
+        "PG_SSL": "false",
+        "MCP_SILENT": "true",
+        "PG_USERNAME": "postgres",
+        "PG_HOST": "10.0.19.224",
+        "PG_PASSWORD": "pgvector2025",
+        "PG_PORT": "5433",
+        "DB_TYPE": "postgresql",
+        "PG_DATABASE": "rag-memorydb"
+      },
+       "autoApprove": ["createEntities", "createRelations", "getKnowledgeGraphStats"]
+    }
+  }
+}

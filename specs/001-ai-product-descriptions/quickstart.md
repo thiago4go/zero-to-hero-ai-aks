@@ -9,9 +9,19 @@
 - Azure subscription with permissions to create resources
 - Azure CLI installed and authenticated (`az login`)
 - Go 1.23+ installed
-- Docker installed (for local Dapr)
+- Docker installed and logged in to Docker Hub (`docker login docker.io`)
 - Dapr CLI installed (`dapr init`)
 - kubectl configured for AKS cluster (for deployment)
+- Docker Hub account: thiago4go
+
+## Repository Setup
+
+This project uses a forked version of dapr-store:
+- **Fork**: git@github.com:thiago4go/dapr-store.git
+- **Upstream**: git@github.com:Azure-Samples/dapr-store.git
+- **Docker Hub**: docker.io/thiago4go
+
+All Docker images are built and pushed to `docker.io/thiago4go/`.
 
 ## Local Development Setup
 
@@ -22,7 +32,7 @@
 RESOURCE_GROUP="rg-ai-aks-lab"
 LOCATION="eastus"
 OPENAI_NAME="openai-dapr-store-$(whoami)"
-DEPLOYMENT_NAME="gpt-4"
+DEPLOYMENT_NAME="gpt-4o-mini"
 
 # Create resource group (if not exists)
 az group create --name $RESOURCE_GROUP --location $LOCATION
@@ -36,13 +46,13 @@ az cognitiveservices account create \
   --sku S0 \
   --yes
 
-# Create GPT-4 deployment
+# Create GPT-4o-mini deployment (cost-effective choice)
 az cognitiveservices account deployment create \
   --name $OPENAI_NAME \
   --resource-group $RESOURCE_GROUP \
   --deployment-name $DEPLOYMENT_NAME \
-  --model-name gpt-4 \
-  --model-version "0613" \
+  --model-name gpt-4o-mini \
+  --model-version "2024-07-18" \
   --model-format OpenAI \
   --sku-capacity 10 \
   --sku-name "Standard"

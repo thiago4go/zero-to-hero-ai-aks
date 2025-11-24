@@ -16,6 +16,12 @@ param postgresqlAdminPassword string
 @description('Log Analytics workspace name')
 param logAnalyticsName string
 
+@description('Azure OpenAI resource name')
+param openaiName string
+
+@description('Azure OpenAI deployment name')
+param openaiDeploymentName string = 'gpt-4o-mini'
+
 // Log Analytics Workspace
 module monitoring 'monitoring.bicep' = {
   name: 'monitoring-deployment'
@@ -45,6 +51,29 @@ module postgresql 'postgresql.bicep' = {
   }
 }
 
+// Azure OpenAI
+module openai 'openai.bicep' = {
+  name: 'openai-deployment'
+  params: {
+    location: 'eastus'
+    openaiName: openaiName
+    deploymentName: openaiDeploymentName
+  }
+}
+
+// Managed Identity for products service
+module identity 'identity.bicep' = {
+  name: 'identity-deployment'
+  params: {
+    location: location
+    identityName: '${aksClusterName}-products-identity'
+    openaiName: openaiName
+  }
+}
+
 output aksClusterName string = aks.outputs.clusterName
 output postgresqlServerFqdn string = postgresql.outputs.serverFqdn
 output logAnalyticsWorkspaceId string = monitoring.outputs.workspaceId
+output openaiEndpoint string = openai.outputs.endpoint
+output openaiDeploymentName string = openai.outputs.deploymentName
+output managedIdentityClientId string = identity.outputs.clientId

@@ -52,6 +52,12 @@ Enhance the products service to automatically generate compelling product descri
 - Expected 1000 daily product views
 - Azure OpenAI rate limit: 60 requests/minute (standard tier)
 
+**Model Selection** (Updated 2025-11-24):
+- **Model**: GPT-4o-mini
+- **Rationale**: Cost-effective (~$0.15/1M input, ~$0.60/1M output tokens), fast response times, perfect for creative product descriptions
+- **Estimated Cost**: ~$0.02 for 100 products (200 tokens each)
+- **Deployment Name**: gpt-4o-mini
+
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*

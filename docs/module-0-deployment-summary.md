@@ -241,7 +241,7 @@ az consumption usage list --start-date $(date -d "7 days ago" +%Y-%m-%d)
 
 ## 🔗 References
 
-- **Dapr Store GitHub**: https://github.com/azure-samples/dapr-store
+- **Dapr Store GitHub**: https://github.com/thiago4go/dapr-store (forked from https://github.com/azure-samples/dapr-store)
 - **Dapr Documentation**: https://docs.dapr.io/
 - **AKS Documentation**: https://docs.microsoft.com/azure/aks/
 - **Prometheus Operator**: https://github.com/prometheus-operator/kube-prometheus

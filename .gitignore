@@ -42,3 +42,7 @@ kubeconfig*
 
 # Temporary files
 *.tmp
+
+# Docker credentials
+.docker/
+docker-credentials.txt

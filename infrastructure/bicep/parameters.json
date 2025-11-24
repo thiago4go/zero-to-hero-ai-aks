@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
-      "value": "eastus"
+      "value": "westus2"
     },
     "aksClusterName": {
       "value": "aks-ai-lab"
@@ -16,6 +16,12 @@
     },
     "logAnalyticsName": {
       "value": "logs-ai-lab"
+    },
+    "openaiName": {
+      "value": "openai-dapr-store-thiago"
+    },
+    "openaiDeploymentName": {
+      "value": "gpt-4o-mini"
     }
   }
 }
